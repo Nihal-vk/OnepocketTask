@@ -5,21 +5,20 @@ const filename = "src/countWord/data.txt";
 
 // console.log(fs.readFileSync(filename, "utf-8"));
 
-fs.readFile(filename , 'utf-8', (err,data)=>{
-    if(err){
-        console.log("erorr loading file",err);
-        return;
-    }
+fs.readFile(filename, "utf-8", (err, data) => {
+  if (err) {
+    console.log("erorr loading file", err);
+    return;
+  }
 
-    const wordCount= countWords(data)
-    console.log('total wordCount is : ',wordCount);
-})
+  const wordCount = countWords(data);
+  console.log("total wordCount is : ", wordCount);
+});
 
+function countWords(data) {
+  const words = data.split(/\s+/);
 
-function countWords(data){
-    const words= data.split(/\s+/);
+  const filter = words.filter((word) => word != "");
 
-    const filter=words.filter((word)=>word!='')
-
-    return filter.length;
+  return filter.length;
 }
